@@ -42,6 +42,34 @@ bot.command('hello', ctx => {
 })
 
 
+bot.hears('quiz', ctx => {
+    console.log(ctx.from)
+    ctx.deleteMessage();
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Random topic Select', {
+
+        reply_markup: {
+            inline_keyboard: [
+
+                [{
+                    text: "Select difficulty",
+                    callback_data: 'select difficulty'
+                }],
+
+                [{
+                    text: "random difficulty",
+                    callback_data: 'random difficulty'
+                }],
+
+
+            ]
+        }
+    })
+
+
+})
+
+
 
 
 
