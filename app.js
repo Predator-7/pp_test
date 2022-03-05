@@ -69,6 +69,37 @@ bot.hears('quiz', ctx => {
 
 })
 
+bot.action('select difficulty', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800 - 1300)",
+                    callback_data: 'difeasy'
+                }],
+
+                [{
+                    text: "Medium (1400 - 2000)",
+                    callback_data: 'difmedium'
+                }],
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhard'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+
 
 
 
@@ -180,14 +211,6 @@ bot.hears('practice', ctx => {
                     text: "trees",
                     callback_data: 'trees'
                 }],
-
-
-
-
-
-
-
-
 
             ],
 
