@@ -41,24 +41,26 @@ bot.command('hello', ctx => {
     bot.telegram.sendMessage(ctx.chat.id, 'Hello !  ' + ctx.from.first_name, {})
 })
 
+// Quiz section :
+
 
 bot.hears('quiz', ctx => {
     console.log(ctx.from)
     ctx.deleteMessage();
 
-    bot.telegram.sendMessage(ctx.chat.id, 'Random topic Select', {
+    bot.telegram.sendMessage(ctx.chat.id, 'We provide you guyz two type of quizes :-', {
 
         reply_markup: {
             inline_keyboard: [
 
                 [{
-                    text: "Select difficulty",
-                    callback_data: 'select difficulty'
+                    text: "Random Topic",
+                    callback_data: 'Random Topic'
                 }],
 
                 [{
-                    text: "random difficulty",
-                    callback_data: 'random difficulty'
+                    text: "Select Topic",
+                    callback_data: 'Select Topic'
                 }],
 
 
@@ -69,23 +71,73 @@ bot.hears('quiz', ctx => {
 
 })
 
-bot.action('select difficulty', ctx => {
+bot.action('Random Topic', ctx => {
 
-    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty', {
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty type :-', {
 
         reply_markup: {
 
             inline_keyboard: [
 
                 [{
-                    text: "Easy (800 - 1300)",
+                    text: "Select difficulty",
+                    callback_data: 'Select difficulty'
+                }],
+
+                [{
+                    text: "Random difficulty",
+                    callback_data: 'Random difficulty'
+                }],
+
+            ]
+        }
+    })
+
+})
+
+bot.action('Select Topic', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty type :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Select difficulty",
+                    callback_data: 'Select difficulty topicwise'
+                }],
+
+                [{
+                    text: "Random difficulty",
+                    callback_data: 'Random difficulty topicwise'
+                }],
+
+            ]
+        }
+    })
+
+})
+
+
+bot.action('Select difficulty', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
                     callback_data: 'difeasy'
                 }],
 
                 [{
-                    text: "Medium (1400 - 2000)",
+                    text: "Medium (1400-2000)",
                     callback_data: 'difmedium'
                 }],
+
                 [{
                     text: "Hard (2000+)",
                     callback_data: 'difhard'
@@ -97,6 +149,39 @@ bot.action('select difficulty', ctx => {
     })
 
 })
+
+
+bot.action('Select difficulty topicwise', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasytopicwise'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumtopicwise'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhardtopicwise'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
 
 
 
