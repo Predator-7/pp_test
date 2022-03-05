@@ -24,8 +24,6 @@ request.get('https://codeforces.com/api/problemset.problems?tags=binary search',
         const obj = JSON.parse(body);
         console.log(obj.status)
 
-
-
     }
 
 })
@@ -117,7 +115,52 @@ bot.hears('practice', ctx => {
                 [{
                     text: "data structures",
                     callback_data: 'data structures'
-                }]
+                }],
+
+                // new yaha se
+                [{
+                    text: "constructive algorithms",
+                    callback_data: 'constructive agorithms'
+                }],
+
+                [{
+                    text: "divide and conquer",
+                    callback_data: 'divide and conquer'
+                }],
+                [{
+                    text: "dsu",
+                    callback_data: 'dsu'
+                }],
+                [{
+                    text: "games",
+                    callback_data: 'games'
+                }],
+                [{
+                    text: "geometry",
+                    callback_data: 'geometry'
+                }],
+
+                [{
+                    text: "implementation",
+                    callback_data: 'implementation'
+                }],
+                [{
+                    text: "number theory",
+                    callback_data: 'number theory'
+                }],
+                [{
+                    text: "trees",
+                    callback_data: 'trees'
+                }],
+
+
+
+
+
+
+
+
+
             ],
 
 
@@ -809,6 +852,8 @@ bot.action('bitmasks', ctx => {
 
 })
 
+
+
 bot.action('data structures', ctx => {
 
     let input_array = []
@@ -859,6 +904,461 @@ bot.action('data structures', ctx => {
 
 
 })
+
+
+
+
+
+bot.action('constructive algorithms', ctx => {
+
+    let input_array = []
+
+    const mySet = new Set()
+
+    request.get('https://codeforces.com/api/problemset.problems?tags=constructive algorithms', function(error, response, body) {
+
+        if (!error && response.statusCode === 200) {
+
+            const obj = JSON.parse(body);
+            console.log(obj.result.problems.length)
+
+            for (let i = 0; i < obj.result.problems.length; i++) {
+
+                const query_structure = new Object()
+
+
+                query_structure.contest = obj.result.problems[i].contestId;
+                query_structure.questionnumber = obj.result.problems[i].index;
+                query_structure.questionname = obj.result.problems[i].name;
+
+
+
+                input_array.push(query_structure);
+            }
+
+            for (let i = 0; i < 10; i++) {
+                let mynum = getRandomInt(0, input_array.length - 1);
+                if (mySet.has(mynum)) {
+                    i--;
+                } else {
+                    mySet.add(mynum)
+                }
+            }
+
+            for (let item of mySet) {
+
+
+                let s = input_array[item].questionname + " " + "https://www.codeforces.com/problemset/problem/" + input_array[item].contest + "/" + input_array[item].questionnumber;
+
+                bot.telegram.sendMessage(ctx.chat.id, s);
+            }
+
+        }
+
+    })
+
+
+})
+
+
+
+
+
+bot.action('divide and conquer', ctx => {
+
+    let input_array = []
+
+    const mySet = new Set()
+
+    request.get('https://codeforces.com/api/problemset.problems?tags=divide and conquer', function(error, response, body) {
+
+        if (!error && response.statusCode === 200) {
+
+            const obj = JSON.parse(body);
+            console.log(obj.result.problems.length)
+
+            for (let i = 0; i < obj.result.problems.length; i++) {
+
+                const query_structure = new Object()
+
+
+                query_structure.contest = obj.result.problems[i].contestId;
+                query_structure.questionnumber = obj.result.problems[i].index;
+                query_structure.questionname = obj.result.problems[i].name;
+
+
+
+                input_array.push(query_structure);
+            }
+
+            for (let i = 0; i < 10; i++) {
+                let mynum = getRandomInt(0, input_array.length - 1);
+                if (mySet.has(mynum)) {
+                    i--;
+                } else {
+                    mySet.add(mynum)
+                }
+            }
+
+            for (let item of mySet) {
+
+
+                let s = input_array[item].questionname + " " + "https://www.codeforces.com/problemset/problem/" + input_array[item].contest + "/" + input_array[item].questionnumber;
+
+                bot.telegram.sendMessage(ctx.chat.id, s);
+            }
+
+        }
+
+    })
+
+
+})
+
+
+
+
+bot.action('dsu', ctx => {
+
+    let input_array = []
+
+    const mySet = new Set()
+
+    request.get('https://codeforces.com/api/problemset.problems?tags=dsu', function(error, response, body) {
+
+        if (!error && response.statusCode === 200) {
+
+            const obj = JSON.parse(body);
+            console.log(obj.result.problems.length)
+
+            for (let i = 0; i < obj.result.problems.length; i++) {
+
+                const query_structure = new Object()
+
+
+                query_structure.contest = obj.result.problems[i].contestId;
+                query_structure.questionnumber = obj.result.problems[i].index;
+                query_structure.questionname = obj.result.problems[i].name;
+
+
+
+                input_array.push(query_structure);
+            }
+
+            for (let i = 0; i < 10; i++) {
+                let mynum = getRandomInt(0, input_array.length - 1);
+                if (mySet.has(mynum)) {
+                    i--;
+                } else {
+                    mySet.add(mynum)
+                }
+            }
+
+            for (let item of mySet) {
+
+
+                let s = input_array[item].questionname + " " + "https://www.codeforces.com/problemset/problem/" + input_array[item].contest + "/" + input_array[item].questionnumber;
+
+                bot.telegram.sendMessage(ctx.chat.id, s);
+            }
+
+        }
+
+    })
+
+
+})
+
+
+
+
+bot.action('games', ctx => {
+
+    let input_array = []
+
+    const mySet = new Set()
+
+    request.get('https://codeforces.com/api/problemset.problems?tags=games', function(error, response, body) {
+
+        if (!error && response.statusCode === 200) {
+
+            const obj = JSON.parse(body);
+            console.log(obj.result.problems.length)
+
+            for (let i = 0; i < obj.result.problems.length; i++) {
+
+                const query_structure = new Object()
+
+
+                query_structure.contest = obj.result.problems[i].contestId;
+                query_structure.questionnumber = obj.result.problems[i].index;
+                query_structure.questionname = obj.result.problems[i].name;
+
+
+
+                input_array.push(query_structure);
+            }
+
+            for (let i = 0; i < 10; i++) {
+                let mynum = getRandomInt(0, input_array.length - 1);
+                if (mySet.has(mynum)) {
+                    i--;
+                } else {
+                    mySet.add(mynum)
+                }
+            }
+
+            for (let item of mySet) {
+
+
+                let s = input_array[item].questionname + " " + "https://www.codeforces.com/problemset/problem/" + input_array[item].contest + "/" + input_array[item].questionnumber;
+
+                bot.telegram.sendMessage(ctx.chat.id, s);
+            }
+
+        }
+
+    })
+
+
+})
+
+
+
+
+bot.action('geometry', ctx => {
+
+    let input_array = []
+
+    const mySet = new Set()
+
+    request.get('https://codeforces.com/api/problemset.problems?tags=geometry', function(error, response, body) {
+
+        if (!error && response.statusCode === 200) {
+
+            const obj = JSON.parse(body);
+            console.log(obj.result.problems.length)
+
+            for (let i = 0; i < obj.result.problems.length; i++) {
+
+                const query_structure = new Object()
+
+
+                query_structure.contest = obj.result.problems[i].contestId;
+                query_structure.questionnumber = obj.result.problems[i].index;
+                query_structure.questionname = obj.result.problems[i].name;
+
+
+
+                input_array.push(query_structure);
+            }
+
+            for (let i = 0; i < 10; i++) {
+                let mynum = getRandomInt(0, input_array.length - 1);
+                if (mySet.has(mynum)) {
+                    i--;
+                } else {
+                    mySet.add(mynum)
+                }
+            }
+
+            for (let item of mySet) {
+
+
+                let s = input_array[item].questionname + " " + "https://www.codeforces.com/problemset/problem/" + input_array[item].contest + "/" + input_array[item].questionnumber;
+
+                bot.telegram.sendMessage(ctx.chat.id, s);
+            }
+
+        }
+
+    })
+
+
+})
+
+
+
+bot.action('implementation', ctx => {
+
+    let input_array = []
+
+    const mySet = new Set()
+
+    request.get('https://codeforces.com/api/problemset.problems?tags=implementation', function(error, response, body) {
+
+        if (!error && response.statusCode === 200) {
+
+            const obj = JSON.parse(body);
+            console.log(obj.result.problems.length)
+
+            for (let i = 0; i < obj.result.problems.length; i++) {
+
+                const query_structure = new Object()
+
+
+                query_structure.contest = obj.result.problems[i].contestId;
+                query_structure.questionnumber = obj.result.problems[i].index;
+                query_structure.questionname = obj.result.problems[i].name;
+
+
+
+                input_array.push(query_structure);
+            }
+
+            for (let i = 0; i < 10; i++) {
+                let mynum = getRandomInt(0, input_array.length - 1);
+                if (mySet.has(mynum)) {
+                    i--;
+                } else {
+                    mySet.add(mynum)
+                }
+            }
+
+            for (let item of mySet) {
+
+
+                let s = input_array[item].questionname + " " + "https://www.codeforces.com/problemset/problem/" + input_array[item].contest + "/" + input_array[item].questionnumber;
+
+                bot.telegram.sendMessage(ctx.chat.id, s);
+            }
+
+        }
+
+    })
+
+
+})
+
+
+
+bot.action('number theory', ctx => {
+
+    let input_array = []
+
+    const mySet = new Set()
+
+    request.get('https://codeforces.com/api/problemset.problems?tags=number theory', function(error, response, body) {
+
+        if (!error && response.statusCode === 200) {
+
+            const obj = JSON.parse(body);
+            console.log(obj.result.problems.length)
+
+            for (let i = 0; i < obj.result.problems.length; i++) {
+
+                const query_structure = new Object()
+
+
+                query_structure.contest = obj.result.problems[i].contestId;
+                query_structure.questionnumber = obj.result.problems[i].index;
+                query_structure.questionname = obj.result.problems[i].name;
+
+
+
+                input_array.push(query_structure);
+            }
+
+            for (let i = 0; i < 10; i++) {
+                let mynum = getRandomInt(0, input_array.length - 1);
+                if (mySet.has(mynum)) {
+                    i--;
+                } else {
+                    mySet.add(mynum)
+                }
+            }
+
+            for (let item of mySet) {
+
+
+                let s = input_array[item].questionname + " " + "https://www.codeforces.com/problemset/problem/" + input_array[item].contest + "/" + input_array[item].questionnumber;
+
+                bot.telegram.sendMessage(ctx.chat.id, s);
+            }
+
+        }
+
+    })
+
+
+})
+
+
+
+bot.action('trees', ctx => {
+
+    let input_array = []
+
+    const mySet = new Set()
+
+    request.get('https://codeforces.com/api/problemset.problems?tags=trees', function(error, response, body) {
+
+        if (!error && response.statusCode === 200) {
+
+            const obj = JSON.parse(body);
+            console.log(obj.result.problems.length)
+
+            for (let i = 0; i < obj.result.problems.length; i++) {
+
+                const query_structure = new Object()
+
+
+                query_structure.contest = obj.result.problems[i].contestId;
+                query_structure.questionnumber = obj.result.problems[i].index;
+                query_structure.questionname = obj.result.problems[i].name;
+
+
+
+                input_array.push(query_structure);
+            }
+
+            for (let i = 0; i < 10; i++) {
+                let mynum = getRandomInt(0, input_array.length - 1);
+                if (mySet.has(mynum)) {
+                    i--;
+                } else {
+                    mySet.add(mynum)
+                }
+            }
+
+            for (let item of mySet) {
+
+
+                let s = input_array[item].questionname + " " + "https://www.codeforces.com/problemset/problem/" + input_array[item].contest + "/" + input_array[item].questionnumber;
+
+                bot.telegram.sendMessage(ctx.chat.id, s);
+            }
+
+        }
+
+    })
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
