@@ -97,21 +97,109 @@ bot.action('Random Topic', ctx => {
 
 bot.action('Select Topic', ctx => {
 
-    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty type :-', {
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose Topic :-', {
 
         reply_markup: {
 
             inline_keyboard: [
 
+
                 [{
-                    text: "Select difficulty",
-                    callback_data: 'Select difficulty topicwise'
+                    text: "binary search",
+                    callback_data: 'binary_searchquiz'
                 }],
 
                 [{
-                    text: "Random difficulty",
-                    callback_data: 'Random difficulty topicwise'
+                    text: "combinatorics",
+                    callback_data: 'combinatoricsquiz'
                 }],
+                [{
+                    text: "dfs",
+                    callback_data: 'dfsquiz'
+                }],
+                [{
+                    text: "greedy",
+                    callback_data: 'greedyquiz'
+                }],
+                [{
+                    text: "dp",
+                    callback_data: 'dpquiz'
+                }],
+                [{
+                    text: "strings",
+                    callback_data: 'stringsquiz'
+                }],
+                [{
+                    text: "sortings",
+                    callback_data: 'sortingsquiz'
+                }],
+                [{
+                    text: "graphs",
+                    callback_data: 'graphsquiz'
+                }],
+                [{
+                    text: "two pointers",
+                    callback_data: 'two pointersquiz'
+                }],
+                [{
+                    text: "math",
+                    callback_data: 'mathquiz'
+                }],
+                [{
+                    text: "hashing",
+                    callback_data: 'hashingquiz'
+                }],
+                [{
+                    text: "trees",
+                    callback_data: 'treesquiz'
+                }],
+                [{
+                    text: "bitmasks",
+                    callback_data: 'bitmasksquiz'
+                }],
+                [{
+                    text: "data structures",
+                    callback_data: 'data structuresquiz'
+                }],
+
+                // new yaha se
+                [{
+                    text: "constructive algorithms",
+                    callback_data: 'constructive agorithmsquiz'
+                }],
+
+                [{
+                    text: "divide and conquer",
+                    callback_data: 'divide and conquerquiz'
+                }],
+                [{
+                    text: "dsu",
+                    callback_data: 'dsuquiz'
+                }],
+                [{
+                    text: "games",
+                    callback_data: 'gamesquiz'
+                }],
+                [{
+                    text: "geometry",
+                    callback_data: 'geometryquiz'
+                }],
+
+                [{
+                    text: "implementation",
+                    callback_data: 'implementationquiz'
+                }],
+                [{
+                    text: "number theory",
+                    callback_data: 'number theoryquiz'
+                }],
+                [{
+                    text: "trees",
+                    callback_data: 'treesquiz'
+                }],
+
+
+
 
             ]
         }
