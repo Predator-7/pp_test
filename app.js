@@ -1,7 +1,7 @@
 const { Telegraf } = require('telegraf');
 var request = require('request');
 
-const bot = new Telegraf('5280112309:AAE_S_VFXroTr2ETs2oknCIIU1QXBK59Ixk');
+const bot = new Telegraf(process.env.BOT_TOKEN);
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
