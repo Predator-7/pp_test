@@ -514,7 +514,7 @@ bot.action('Select Topic', ctx => {
 
 
 
-bot.action('Select difficulty topicwise', ctx => {
+bot.action('binary_searchquiz', ctx => {
 
     bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
 
