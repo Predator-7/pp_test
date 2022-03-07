@@ -259,6 +259,141 @@ bot.action('difeasy', ctx => {
 
 
 
+bot.action('difmedium', ctx => {
+
+    let number = getRandomInt(0, topiclist.length - 1)
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Topic :-' + topiclist[number])
+
+
+    let input_array = []
+
+    const mySet = new Set()
+
+    request.get('https://codeforces.com/api/problemset.problems?tags=' + topiclist[number], function(error, response, body) {
+
+        if (!error && response.statusCode === 200) {
+
+            const obj = JSON.parse(body);
+            console.log(obj.result.problems.length)
+
+            for (let i = 0; i < obj.result.problems.length; i++) {
+
+                if (obj.result.problems[i].rating >= 1400 && obj.result.problems[i].rating < 2000) {
+
+                    const query_structure = new Object()
+
+
+                    query_structure.contest = obj.result.problems[i].contestId;
+                    query_structure.questionnumber = obj.result.problems[i].index;
+                    query_structure.questionname = obj.result.problems[i].name;
+
+
+
+                    input_array.push(query_structure);
+
+                    break;
+
+                }
+
+            }
+
+            for (let i = 0; i < 1; i++) {
+                let mynum = getRandomInt(0, input_array.length - 1);
+                if (mySet.has(mynum)) {
+                    i--;
+                } else {
+                    mySet.add(mynum)
+                }
+            }
+
+            for (let item of mySet) {
+
+                let s = input_array[item].questionname + " " + "https://www.codeforces.com/problemset/problem/" + input_array[item].contest + "/" + input_array[item].questionnumber;
+                // bot.telegram.sendMessage(ctx.chat.id, input_array[item].questionname);
+                bot.telegram.sendMessage(ctx.chat.id, s);
+            }
+        }
+
+
+    })
+
+
+
+
+
+
+
+})
+
+
+
+
+
+bot.action('difhard', ctx => {
+
+    let number = getRandomInt(0, topiclist.length - 1)
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Topic :-' + topiclist[number])
+
+
+    let input_array = []
+
+    const mySet = new Set()
+
+    request.get('https://codeforces.com/api/problemset.problems?tags=' + topiclist[number], function(error, response, body) {
+
+        if (!error && response.statusCode === 200) {
+
+            const obj = JSON.parse(body);
+            console.log(obj.result.problems.length)
+
+            for (let i = 0; i < obj.result.problems.length; i++) {
+
+                if (obj.result.problems[i].rating >= 2000) {
+
+                    const query_structure = new Object()
+
+
+                    query_structure.contest = obj.result.problems[i].contestId;
+                    query_structure.questionnumber = obj.result.problems[i].index;
+                    query_structure.questionname = obj.result.problems[i].name;
+
+
+
+                    input_array.push(query_structure);
+
+                    break;
+
+                }
+
+            }
+
+            for (let i = 0; i < 1; i++) {
+                let mynum = getRandomInt(0, input_array.length - 1);
+                if (mySet.has(mynum)) {
+                    i--;
+                } else {
+                    mySet.add(mynum)
+                }
+            }
+
+            for (let item of mySet) {
+
+                let s = input_array[item].questionname + " " + "https://www.codeforces.com/problemset/problem/" + input_array[item].contest + "/" + input_array[item].questionnumber;
+                // bot.telegram.sendMessage(ctx.chat.id, input_array[item].questionname);
+                bot.telegram.sendMessage(ctx.chat.id, s);
+            }
+        }
+
+
+    })
+
+
+})
+
+
+
 
 //
 
