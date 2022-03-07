@@ -221,7 +221,7 @@ bot.action('difeasy', ctx => {
 
                     input_array.push(query_structure);
 
-                    break;
+                    //  break;
 
                 }
 
