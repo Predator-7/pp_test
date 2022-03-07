@@ -10,6 +10,9 @@ function getRandomInt(min, max) {
 }
 
 
+let topiclist = ["binary search", "combinatorics", "dfs", "greedy", "dp", "strings", "sortings", "graphs", "two pointers", "math", "hashing", "trees", "bitmasks", "data structures", "constructive algorithms", "divide and conquer", "dsu", "games", "geomerty", "implementation", "number theory", "trees"]
+
+
 
 const query_structure = {
     "contest": "",
@@ -94,6 +97,95 @@ bot.action('Random Topic', ctx => {
     })
 
 })
+
+
+bot.action('Select difficulty', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasy'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmedium'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhard'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+bot.action('Random difficulty', ctx => {
+
+    let number = getRandomInt(0, topiclist.length - 1)
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Topic :-' + topiclist[number])
+
+    let input_array = []
+
+    const mySet = new Set()
+
+    request.get('https://codeforces.com/api/problemset.problems?tags=' + topiclist[number], function(error, response, body) {
+
+        if (!error && response.statusCode === 200) {
+
+            const obj = JSON.parse(body);
+            console.log(obj.result.problems.length)
+
+            for (let i = 0; i < obj.result.problems.length; i++) {
+
+                const query_structure = new Object()
+
+
+                query_structure.contest = obj.result.problems[i].contestId;
+                query_structure.questionnumber = obj.result.problems[i].index;
+                query_structure.questionname = obj.result.problems[i].name;
+
+
+
+                input_array.push(query_structure);
+
+
+
+            }
+
+            for (let i = 0; i < 10; i++) {
+                let mynum = getRandomInt(0, input_array.length - 1);
+                if (mySet.has(mynum)) {
+                    i--;
+                } else {
+                    mySet.add(mynum)
+                }
+            }
+
+            for (let item of mySet) {
+
+                let s = input_array[item].questionname + " " + "https://www.codeforces.com/problemset/problem/" + input_array[item].contest + "/" + input_array[item].questionnumber;
+                // bot.telegram.sendMessage(ctx.chat.id, input_array[item].questionname);
+                bot.telegram.sendMessage(ctx.chat.id, s);
+            }
+        }
+
+
+    })
+})
+
+
 
 bot.action('Select Topic', ctx => {
 
@@ -198,9 +290,6 @@ bot.action('Select Topic', ctx => {
                     callback_data: 'treesquiz'
                 }],
 
-
-
-
             ]
         }
     })
@@ -208,35 +297,9 @@ bot.action('Select Topic', ctx => {
 })
 
 
-bot.action('Select difficulty', ctx => {
-
-    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
-
-        reply_markup: {
-
-            inline_keyboard: [
-
-                [{
-                    text: "Easy (800-1300)",
-                    callback_data: 'difeasy'
-                }],
-
-                [{
-                    text: "Medium (1400-2000)",
-                    callback_data: 'difmedium'
-                }],
-
-                [{
-                    text: "Hard (2000+)",
-                    callback_data: 'difhard'
-                }],
 
 
-            ]
-        }
-    })
 
-})
 
 
 bot.action('Select difficulty topicwise', ctx => {
