@@ -208,7 +208,7 @@ bot.action('difeasy', ctx => {
 
             for (let i = 0; i < obj.result.problems.length; i++) {
 
-                if (obj.result.problems.rating >= 800 && obj.result.problems.rating <= 1300) {
+                if (obj.result.problems[i].rating >= 800 && obj.result.problems[i].rating <= 1300) {
 
                     const query_structure = new Object()
 
@@ -221,7 +221,7 @@ bot.action('difeasy', ctx => {
 
                     input_array.push(query_structure);
 
-                    //  break;
+                    break;
 
                 }
 
