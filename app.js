@@ -164,7 +164,7 @@ bot.action('Random difficulty', ctx => {
 
             }
 
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 1; i++) {
                 let mynum = getRandomInt(0, input_array.length - 1);
                 if (mySet.has(mynum)) {
                     i--;
