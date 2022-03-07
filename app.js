@@ -10,7 +10,7 @@ function getRandomInt(min, max) {
 }
 
 
-let topiclist = ["binary_search", "combinatorics", "dfs and similar", "greedy", "dp", "strings", "sortings", "graphs", "two pointers", "math", "hashing", "trees", "bitmasks", "data structures", "constructive algorithms", "divide and conquer", "dsu", "games", "geomerty", "implementation", "number theory", "trees"]
+let topiclist = ["binary search", "combinatorics", "dfs and similar", "greedy", "dp", "strings", "sortings", "graphs", "two pointers", "math", "hashing", "trees", "bitmasks", "data structures", "constructive algorithms", "divide and conquer", "dsu", "games", "geometry", "implementation", "number theory", "trees"]
 
 
 
