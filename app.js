@@ -497,10 +497,7 @@ bot.action('Select Topic', ctx => {
                     text: "number theory",
                     callback_data: 'number theoryquiz'
                 }],
-                [{
-                    text: "trees",
-                    callback_data: 'treesquiz'
-                }],
+
 
             ]
         }
@@ -524,17 +521,17 @@ bot.action('binary_searchquiz', ctx => {
 
                 [{
                     text: "Easy (800-1300)",
-                    callback_data: 'difeasytopicwise'
+                    callback_data: 'difeasybinary search'
                 }],
 
                 [{
                     text: "Medium (1400-2000)",
-                    callback_data: 'difmediumtopicwise'
+                    callback_data: 'difmediumbinary search'
                 }],
 
                 [{
                     text: "Hard (2000+)",
-                    callback_data: 'difhardtopicwise'
+                    callback_data: 'difhardbinary search'
                 }],
 
 
@@ -543,6 +540,706 @@ bot.action('binary_searchquiz', ctx => {
     })
 
 })
+
+bot.action('difeasybinary search', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Binary search easy :-')
+
+    let input_array = []
+
+    const mySet = new Set()
+
+    request.get('https://codeforces.com/api/problemset.problems?tags=binary search', function(error, response, body) {
+
+        if (!error && response.statusCode === 200) {
+
+            const obj = JSON.parse(body);
+            console.log(obj.result.problems.length)
+
+            for (let i = 0; i < obj.result.problems.length; i++) {
+
+                if (obj.result.problems[i].rating >= 800 && obj.result.problems[i].rating <= 1300) {
+
+                    const query_structure = new Object()
+
+
+                    query_structure.contest = obj.result.problems[i].contestId;
+                    query_structure.questionnumber = obj.result.problems[i].index;
+                    query_structure.questionname = obj.result.problems[i].name;
+
+
+
+                    input_array.push(query_structure);
+
+                    break;
+
+                }
+
+            }
+
+            for (let i = 0; i < 1; i++) {
+                let mynum = getRandomInt(0, input_array.length - 1);
+                if (mySet.has(mynum)) {
+                    i--;
+                } else {
+                    mySet.add(mynum)
+                }
+            }
+
+            for (let item of mySet) {
+
+                let s = input_array[item].questionname + " " + "https://www.codeforces.com/problemset/problem/" + input_array[item].contest + "/" + input_array[item].questionnumber;
+                // bot.telegram.sendMessage(ctx.chat.id, input_array[item].questionname);
+                bot.telegram.sendMessage(ctx.chat.id, s);
+            }
+        }
+
+
+    })
+
+
+
+})
+
+
+
+bot.action('combinatoricsquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasycombinatorics'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumcombinatorics'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhardcombinatorics'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+bot.action('dfsquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasydfs'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumdfs'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difharddfs'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+
+bot.action('greedyquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasygreedy'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumgreedy'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhardgreedy'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+bot.action('dpquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasydp'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumdp'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difharddp'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+
+bot.action('stringsquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasystrings'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumstrings'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhardstrings'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+
+bot.action('sortingsquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasysortings'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumsortings'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhardsortings'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+
+bot.action('graphsquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasygraphs'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumgraphs'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhardgraphs'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+bot.action('two pointersquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasytwo pointers'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumtwo pointers'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhardtwo pointers'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+
+bot.action('mathquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasymath'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediummath'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhardmath'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+
+bot.action('hashingquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasyhashing'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumhashing'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhardhashing'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+
+bot.action('treesquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasytrees'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumtrees'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhardtrees'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+
+bot.action('bitmasksquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasybitmasks'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumbitmasks'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhardbitmasks'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+
+bot.action('data structuresquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasydata structures'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumdata structures'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difharddata structures'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+
+bot.action('constructive algorithsquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasyconstructive algoriths'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumconstructive algoriths'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhardconstructive algoriths'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+bot.action('divide and conquerquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasydivide and conquer'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumdivide and conquer'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difharddivide and conquer'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+
+bot.action('dsuquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasydsu'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumdsu'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difharddsu'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+
+
+bot.action('gamesquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasygames'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumgames'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhardgames'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+
+bot.action('geometryquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasygeometry'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumgeometry'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhardgeometry'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+
+bot.action('implementationquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasyimplementation'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumimplementation'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhardimplementation'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
+
+
+bot.action('number theoryquiz', ctx => {
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Choose difficulty :-', {
+
+        reply_markup: {
+
+            inline_keyboard: [
+
+                [{
+                    text: "Easy (800-1300)",
+                    callback_data: 'difeasynumber theory'
+                }],
+
+                [{
+                    text: "Medium (1400-2000)",
+                    callback_data: 'difmediumnumber theory'
+                }],
+
+                [{
+                    text: "Hard (2000+)",
+                    callback_data: 'difhardnumber theory'
+                }],
+
+
+            ]
+        }
+    })
+
+})
+
+
 
 
 
@@ -655,10 +1352,7 @@ bot.hears('practice', ctx => {
                     text: "number theory",
                     callback_data: 'number theory'
                 }],
-                [{
-                    text: "trees",
-                    callback_data: 'trees'
-                }],
+
 
             ],
 
