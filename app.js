@@ -31,6 +31,8 @@ request.get('https://codeforces.com/api/problemset.problems?tags=binary search',
 
 })
 
+bot.telegram.sendMessage(ctx.chat.id, 'Type "/help" to get information about bot.')
+
 
 
 bot.command('start', ctx => {
