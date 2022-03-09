@@ -54,9 +54,9 @@ bot.command('start', ctx => {
 
 bot.command('help', ctx => {
     console.log(ctx.from)
-    bot.telegram.sendMessage(ctx.chat.id, 'Type "practice" to start practicing. This will give 10 random questions on a selected topic.')
+    bot.telegram.sendMessage(ctx.chat.id, 'Type practice to start practicing. This will give 10 random questions on a selected topic.')
 
-    bot.telegram.sendMessage(ctx.chat.id, 'Type "quiz" to start quiz. This will give a random question on a selected topic / difficulty.')
+    bot.telegram.sendMessage(ctx.chat.id, 'Type quiz to start quiz. This will give a random question on a selected topic / difficulty.')
 
 })
 
@@ -64,7 +64,7 @@ bot.command('help', ctx => {
 
 bot.command('hello', ctx => {
     console.log(ctx.from)
-    bot.telegram.sendMessage(ctx.chat.id, 'Hello !  ' + ctx.from.first_name, {})
+    bot.telegram.sendMessage(ctx.chat.id, 'Hello ! ' + ctx.from.first_name, {})
 })
 
 // Quiz section :
@@ -74,7 +74,7 @@ bot.hears('quiz', ctx => {
     console.log(ctx.from)
     ctx.deleteMessage();
 
-    bot.telegram.sendMessage(ctx.chat.id, 'We provide you guyz two type of quizes :-', {
+    bot.telegram.sendMessage(ctx.chat.id, 'There are two type of quizes :-', {
 
         reply_markup: {
             inline_keyboard: [
