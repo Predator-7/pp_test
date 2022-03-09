@@ -35,9 +35,9 @@ request.get('https://codeforces.com/api/problemset.problems?tags=binary search',
 
 bot.command('start', ctx => {
     console.log(ctx.from)
-    bot.telegram.sendMessage(ctx.chat.id, 'Hello there! Welcome to my new telegram bot.')
+    bot.telegram.sendMessage(ctx.chat.id, 'Hello there! Welcome to competitive programming practice bot.')
 
-    bot.telegram.sendMessage(ctx.chat.id, 'Type "/start" to begin.')
+    // bot.telegram.sendMessage(ctx.chat.id, 'Type "/start" to begin.')
 })
 
 
