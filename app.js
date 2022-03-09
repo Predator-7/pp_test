@@ -39,6 +39,14 @@ bot.command('start', ctx => {
     console.log(ctx.from)
     bot.telegram.sendMessage(ctx.chat.id, 'Hello there! Welcome to competitive programming practice bot.')
 
+    bot.telegram.sendMessage(ctx.chat.id, 'Type "practice" to start practicing. This will give 10 random questions on a selected topic.')
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Type "quiz" to start quiz. This will give a random question on a selected topic / difficulty.')
+
+    bot.telegram.sendMessage(ctx.chat.id, 'Type "/help" to get information about bot and instructions are also there in description.')
+
+
+
     // bot.telegram.sendMessage(ctx.chat.id, 'Type "/start" to begin.')
 })
 
@@ -46,9 +54,9 @@ bot.command('start', ctx => {
 
 bot.command('help', ctx => {
     console.log(ctx.from)
-    bot.telegram.sendMessage(ctx.chat.id, 'Type practice to start practicing. This will give 10 random questions on a selected topic.')
+    bot.telegram.sendMessage(ctx.chat.id, 'Type "practice" to start practicing. This will give 10 random questions on a selected topic.')
 
-    bot.telegram.sendMessage(ctx.chat.id, 'Type quiz to start quiz. This will give a random question on a selected topic / difficulty.')
+    bot.telegram.sendMessage(ctx.chat.id, 'Type "quiz" to start quiz. This will give a random question on a selected topic / difficulty.')
 
 })
 
